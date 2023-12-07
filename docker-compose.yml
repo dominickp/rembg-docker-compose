@@ -1,0 +1,13 @@
+version: "3.4"
+
+services:
+
+  rembg:
+    build: .
+    init: true
+    volumes: 
+      - ./input:/tmp/input
+      - ./output:/tmp/output
+    deploy: {resources: {reservations: {devices: [{driver: nvidia, capabilities: [gpu, video]}]}}}
+    command: p -a /tmp/input /tmp/output
+
