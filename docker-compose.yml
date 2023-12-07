@@ -11,3 +11,15 @@ services:
     deploy: {resources: {reservations: {devices: [{driver: nvidia, capabilities: [gpu, video]}]}}}
     command: p -a /tmp/input /tmp/output
 
+  # To use this, clone https://github.com/nadermx/backgroundremover at the same
+  # level as this project.
+  # NOTE: This is not yet working.
+  backgroundremover:
+    build: ./backgroundremover
+    volumes: 
+      - ./backgroundremover/input:/input
+      - ./backgroundremover/output:/output
+    init: true
+    deploy: {resources: {reservations: {devices: [{driver: nvidia, capabilities: [gpu, video]}]}}}
+    command: -i /input/input.png output.png
+
