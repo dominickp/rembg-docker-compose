@@ -1,6 +1,6 @@
 # rembg-docker
  
- PLace files in `./input` and run:
+ Place files in `./input` and run:
 
 ```sh
 dc run rembg
